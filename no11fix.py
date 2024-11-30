@@ -67,6 +67,9 @@ elif page == "Drama Data":
 elif page == "Visualization":
     st.title("Data Visualization")
 
+    # Define highest_rated_drama before the if statement
+    highest_rated_drama = drama_data[drama_data['Rank'] == 1]
+
     # Select chart type
     chart_type = st.selectbox("Select Chart Type", ["Scatter Plot", "Duration vs Rating", "Episode vs Rating"])
 
@@ -84,7 +87,6 @@ elif page == "Visualization":
 
     elif chart_type == "Duration vs Rating":
         st.header("Duration vs Rating (Highest Rated Drama)")
-        highest_rated_drama = drama_data[drama_data['Rank'] == 1]
         fig, ax = plt.subplots()
         ax.scatter(highest_rated_drama["Duration"], highest_rated_drama["Score"])
         ax.set_xlabel("Duration")
